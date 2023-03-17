@@ -6,20 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class JdbcUtils {
-	// Á¬½Ó¸ñÊ½£º[jdbc£ºmysql£º//ipµØÖ·£º¶Ë¿ÚºÅ/Êı¾İ¿âÃû³Æ£¿Ñ¡Ïî1&Ñ¡Ïî2...] useSSL=false ¹Ø±ÕSSLÁ¬½Ó¾¯¸æ
+	// è¿æ¥æ ¼å¼ï¼š[jdbcï¼šmysqlï¼š//ipåœ°å€ï¼šç«¯å£å·/æ•°æ®åº“åç§°ï¼Ÿé€‰é¡¹1&é€‰é¡¹2...] useSSL=false å…³é—­SSLè¿æ¥è­¦å‘Š
 	private static String url = "jdbc:mysql://localhost:3306/hotelsystem?"
 			+ "useSSL=false&useUnicode=true&characterEncoding=GBK&serverTimezone=GMT%2B8";
-	// mysqlÊı¾İ¿âÓÃ»§Ãû
+	// mysqlæ•°æ®åº“ç”¨æˆ·å
 	private static String user = "root";
-	// mysqlÊı¾İ¿âÃÜÂë
-	private static String password = "2002lyc";
+	// mysqlæ•°æ®åº“å¯†ç 
+	private static String password = "æ•°æ®åº“å¯†ç ";
 
 	private static boolean loadStatus = false;
 
-	// ¾²Ì¬´úÂë¿é£¬ÔÚÀà±»µ÷ÓÃÊ±¾Í×Ô¶¯Ö´ĞĞ
+	// é™æ€ä»£ç å—ï¼Œåœ¨ç±»è¢«è°ƒç”¨æ—¶å°±è‡ªåŠ¨æ‰§è¡Œ
 	static {
-		// ¡¾1¡¿¼ÓÔØMySQLÌá¹©µÄÇı¶¯Àà(Í¨¹ı·´ÉäµÄĞÎÊ½)
-		// ¡¾2¡¿ÀûÓÃÇı¶¯¹ÜÀíÆ÷À´¶ÁÈ¡Çı¶¯µÄÏà¹ØĞÅÏ¢ÒÔ¼°ÀûÓÃÇı¶¯¹ÜÀíÆ÷À´¹ÜÀíJVMÖĞµÄÇı¶¯
+		// ã€1ã€‘åŠ è½½MySQLæä¾›çš„é©±åŠ¨ç±»(é€šè¿‡åå°„çš„å½¢å¼)
+		// ã€2ã€‘åˆ©ç”¨é©±åŠ¨ç®¡ç†å™¨æ¥è¯»å–é©±åŠ¨çš„ç›¸å…³ä¿¡æ¯ä»¥åŠåˆ©ç”¨é©±åŠ¨ç®¡ç†å™¨æ¥ç®¡ç†JVMä¸­çš„é©±åŠ¨
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			loadStatus = true;
@@ -28,13 +28,13 @@ public class JdbcUtils {
 		}
 	}
 
-	// ÓÃÓÚ½¨Á¢Á¬½Ó
+	// ç”¨äºå»ºç«‹è¿æ¥
 	public static Connection getConnection() {
 		Connection conn = null;
 		if (loadStatus == true) {
 			try {
 				conn = DriverManager.getConnection(url, user, password);
-				System.out.println("[FM·şÎñÆ÷]Êı¾İ¿âÁ¬½Ó½¨Á¢³É¹¦");
+				System.out.println("[FMæœåŠ¡å™¨]æ•°æ®åº“è¿æ¥å»ºç«‹æˆåŠŸ");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -42,7 +42,7 @@ public class JdbcUtils {
 		return conn;
 	}
 
-	// ÓÃÓÚ¹Ø±ÕÁ¬½Ó
+	// ç”¨äºå…³é—­è¿æ¥
 	public static void closeConnection(Connection conn) {
 		if (conn != null) {
 			try {
@@ -54,7 +54,7 @@ public class JdbcUtils {
 		}
 	}
 
-	// ÓÃÓÚ¹Ø±Õ½á¹û¼¯Á¬½Ó
+	// ç”¨äºå…³é—­ç»“æœé›†è¿æ¥
 	public static void closeResultSet(ResultSet rs) {
 		if (rs != null) {
 			try {
